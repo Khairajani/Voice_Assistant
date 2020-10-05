@@ -1,8 +1,10 @@
-# Voice_Assistant
+# Voice Assistant
 This is yet a simple Voice-Assistant System developed using python packages and Google's speech-recongition API. 
+
+### 1) voice_assistant.py
 It first listens to the voice inputs using microhpone, Converts audio into text format, extracts various keywords such as 'today's date', 'who is ...' etc. from the text and finally respond via speech output.
 
-### Example
+### Examples
 1) Speech Input: "What is today's date" 
 -> Text and Speech Ouput: "Today is Tuesday,  October the 6th ."
 
@@ -12,4 +14,10 @@ High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3."
 
 3) Speech Input: "Exit" 
 -> It prints "[Ending]" and stops the system.
+
+
+### 2) app.py
+- Simple voice-to-text and text-to-voice convertor script.
+- Simply run the app.py using ```python app.py``` and used the servies.
+
 
