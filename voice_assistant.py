@@ -8,7 +8,7 @@ import calendar
 import random
 import wikipedia
 
-warnings.filterwarnings('ignore')
+#warnings.filterwarnings('ignore')
 
 r = sr.Recognizer()
 flag = 0
