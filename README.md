@@ -11,5 +11,5 @@ It first listens to the voice inputs using microhpone, Converts audio into text 
 High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3."
 
 3) Speech Input: "Exit" 
--> It prints "Exit" and stops the system.
+-> It prints "[Ending]" and stops the system.
 
