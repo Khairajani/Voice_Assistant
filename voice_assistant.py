@@ -8,8 +8,7 @@ import calendar
 import random
 import wikipedia
 
-
-# warnings.filterwarnings('ignore')
+warnings.filterwarnings('ignore')
 
 r = sr.Recognizer()
 flag = 0
@@ -90,6 +89,7 @@ while True:
         continue
 
     else:
+        print("Reply:", mytext)
         myobj = gTTS(text=mytext, lang=language, slow=False)
         myobj.save("voice.mp3") 
         os.system("mpg321 voice.mp3") 	 
