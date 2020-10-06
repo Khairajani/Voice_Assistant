@@ -1,0 +1,3 @@
+We have looked at the code that you have done. We would like the converter to be a bit more comprehensive.
+1. Text to speech - Ability for the program to understand the type of files that it is getting - so ideally a user will upload a file - text or word file. The program then reads this and converts to voice
+2. Speech to Text - your code should be able to perform tasks - think of the program as an aid to someone who cannot type - using this program to write a mail
