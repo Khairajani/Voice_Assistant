@@ -14,6 +14,7 @@ language = 'en'
 msg = EmailMessage()
 SENDER_EMAIL_ADDRESS = os.environ.get('Email_User')
 SENDER_EMAIL_PASSWORD = os.environ.get('Email_Pass')
+
 RECEIVER_EMAIL_ADDRESS = SENDER_EMAIL_ADDRESS
 port =  465 # 587  # For starttls
 smtp_server = "smtp.gmail.com"

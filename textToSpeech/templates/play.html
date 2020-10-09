@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Text-to-Speech</title>
+<style>
+
+  .header{
+      width:100%;
+      background-color:blue;
+      font-size:40px;
+      color:white;
+      font-weight:bolder;
+      text-align:center
+  }
+
+  h1,h2{
+      text-align:center;
+  }
+
+  h3,h4{
+      text-align:center;
+      font-size: large;
+      font-weight:lighter;
+  }
+
+  .middle{
+      width:100%;
+      text-align:center;
+      font-size: large;
+      font-weight:lighter;
+  }
+
+  .container {
+  height: 50px;
+  position: relative;
+  }
+
+  .center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
+  
+  .button{
+      width:150px;
+      height:50px;
+      font-size:20px;
+      color:white;
+      font-weight:bolder;
+      background-color:blue
+  }
+   
+</style>
+</head>
+
+<body>
+
+  <div class="header">
+    Text-to-Speech
+  </div>
+
+  <audio id="myAudio">
+    <!-- <source src="voice.ogg" type="audio/ogg"> -->
+    <source src="../static/final_audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p class="middle">Click the buttons to play or pause the audio.</p>
+
+  <div class="container">
+    <div class="center">
+  <button onclick="playAudio()" type="button" class="button">Play Audio</button>
+  <button onclick="pauseAudio()" type="button" class="button">Pause Audio</button> 
+    </div>
+  </div>
+
+  <script>
+  var x = document.getElementById("myAudio"); 
+
+  function playAudio() { 
+    x.play(); 
+  } 
+
+  function pauseAudio() { 
+    x.pause(); 
+  } 
+  </script>
+
+</body>
+</html>

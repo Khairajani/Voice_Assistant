@@ -3,6 +3,7 @@ This is yet a simple Voice-Assistant System developed using python packages and 
 
 #### Requirements
 Install the requirements before moving forward using  ```pip install -r requirements.txt```
+There after use ```sudo apt install ffmpeg``` to install ffmpeg for merging audio
 
 ### 1) voice_assistant.py
 It first listens to the voice inputs using microhpone, Converts audio into text format, extracts various keywords such as 'today's date', 'who is ...' etc. from the text and finally respond via speech output.

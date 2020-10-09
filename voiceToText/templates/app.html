@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+  <title>Speech-to-Text</title>
+  <style>
+
+    .header{
+        width:100%;
+        background-color:blue;
+        font-size:40px;
+        color:white;
+        font-weight:bolder;
+        text-align:center
+    }
+  
+    h1,h2{
+        text-align:center;
+    }
+  
+    h3,h4{
+        text-align:center;
+        font-size: large;
+        font-weight:lighter;
+    }
+  
+    .middle{
+        margin-top:10%;
+        width:100%;
+        text-align:center;
+        font-size: large;
+        font-weight:bold;
+
+    }
+  
+    .container {
+    height: 50px;
+    position: relative;
+    }
+  
+    .center {
+    margin-top: 1%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+    
+    .button{
+        width:120px;
+        height:50px;
+        font-size:20px;
+        color:white;
+        font-weight:bolder;
+        background-color:blue
+    }
+     
+  </style>
+  </head>
+
+  <body>
+    <div class="header">
+      Speech-to-Text
+    </div>
+
+    <h3>Record audio for sending a mail<h3>
+    <div class="container">
+      <div class="center">
+        <div id="controls">
+            <button id="recordButton">Record</button>
+            <button id="pauseButton" disabled>Pause</button>
+            <button id="stopButton" disabled>Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="middle">
+      <!-- <div id="formats">Format: start recording to see sample rate</div> -->
+      <p><strong>Recordings:</strong></p>
+      <ol id="recordingsList"></ol>
+    </div>
+
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script type="text/javascript" src="/static/app.js"></script>
+
+    <form method = "post" action="/mail" enctype = "multipart/form-data">
+      <input class="button" type="submit" value="Submit"/>
+    </form> 
+    
+
+  </body>
+  
+</html>
