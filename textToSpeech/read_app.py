@@ -12,6 +12,7 @@ def read_app(fname):
         combined = AudioSegment.from_file("./static/start.mp3")
 
         #looping through file lines
+        print("Converting...")
         for input_line in file_input:
             #print(input_line)
             if input_line!='':
@@ -35,6 +36,7 @@ def read_app(fname):
         combined = AudioSegment.from_file("./static/start.mp3")
 
         #looping through file lines
+        print("Converting...")
         for input_line in file_input.paragraphs:
             
             if input_line!='':
@@ -58,7 +60,8 @@ def read_app(fname):
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         pages = pdfReader.numPages
         combined = AudioSegment.from_file("./static/start.mp3")
-
+        
+        print("Converting...")
         for i in range(pages):
             pageObj = pdfReader.getPage(i)
 
@@ -87,7 +90,7 @@ def read_app(fname):
         except:
             pass
 
-        print("[Done]")
+        print("Converted")
 
         # closing the pdf file object
         pdfFileObj.close()

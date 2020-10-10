@@ -63,30 +63,41 @@
     Text-to-Speech
   </div>
 
-  <audio id="myAudio">
+  <div class="middle">
+  <p>Click the buttons to play or pause the audio.</p>
+  <audio id="myAudio" controls>
     <!-- <source src="voice.ogg" type="audio/ogg"> -->
     <source src="../static/final_audio.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-
-  <p class="middle">Click the buttons to play or pause the audio.</p>
+  </div>
 
   <div class="container">
     <div class="center">
-  <button onclick="playAudio()" type="button" class="button">Play Audio</button>
-  <button onclick="pauseAudio()" type="button" class="button">Pause Audio</button> 
+  <button onclick="playAudio()" type="button" class="button" id="playButton">Play Audio</button>
+  <button onclick="pauseAudio()" type="button" class="button" id="pauseButton">Pause Audio</button> 
     </div>
   </div>
 
   <script>
   var x = document.getElementById("myAudio"); 
+  
+  // var playButton = document.getElementById("playButton");
+  // var pauseButton = document.getElementById("pauseButton");
+  // playButton.disabled = false;
+  // pauseButton.disabled = true;
 
   function playAudio() { 
-    x.play(); 
+    x.play();
+    // playButton.disabled = true;
+    // pauseButton.disabled = false;
   } 
 
   function pauseAudio() { 
     x.pause(); 
+    // playButton.disabled = false;
+    // pauseButton.disabled = true;
+
   } 
   </script>
 
