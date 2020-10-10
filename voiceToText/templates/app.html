@@ -46,6 +46,14 @@
     transform: translate(-50%, -50%);
     }
     
+    .data{
+      font-weight:bolder;
+      font-size:20px;
+      margin-bottom:20px;
+      border:2px solid black;
+      padding:3px;
+   }
+    
     .button{
         width:120px;
         height:50px;
@@ -85,7 +93,8 @@
     <script type="text/javascript" src="/static/app.js"></script>
 
     <form method = "post" action="/mail" enctype = "multipart/form-data">
-      <input class="button" type="submit" value="Submit"/>
+      <input class="data" type = "text" placeholder="Enter Recipient Email" required name = "mailId" /><br>
+      <input class="button" type="submit" value="SEND MAIL"/>
     </form> 
     
 

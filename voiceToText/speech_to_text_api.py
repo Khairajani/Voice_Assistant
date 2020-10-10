@@ -32,45 +32,54 @@ def index():
 @app.route("/mail", methods=['GET', 'POST'])
 def mail():
     if request.method == "POST":
-        if os.path.isfile("./upload/subject.wav") and os.path.isfile("./upload/body.wav"):
+        mailId = request.form['mailId']
+
+        if mailId:
+            if os.path.isfile("./upload/subject.wav") and os.path.isfile("./upload/body.wav"):
+                
+                subject_path = "./upload/subject.wav"
+                body_path = "./upload/body.wav"
+                res = mail_app.mail_app(subject_path,body_path,mailId)
+
+                status= 200
+                response_type = 'application/json'
+                result= {"Status":res}
+                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                try:
+                    os.remove("./upload/subject.wav")
+                    os.remove("./upload/body.wav")
+                except:
+                    pass
+
+                return response
             
-            subject_path = "./upload/subject.wav"
-            body_path = "./upload/body.wav"
-            mail_app.mail_app(subject_path,body_path)
+            elif os.path.isfile("./upload/subject.wav"):
+                status= 400
+                response_type = 'application/json'
+                result= {"Status":"Failed",'Response':'Body not found'}
+                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                return response
+            
+            elif os.path.isfile("./upload/body.wav"):        
+                status= 400
+                response_type = 'application/json'
+                result= {"Status":"Failed",'Response':'Subject not found'}
+                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                return response
+            
+            else:    
+                status= 400
+                response_type = 'application/json'
+                result= {"Status":"Failed",'Response':'Subject and Body not found'}
+                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                return response
 
-            status= 200
-            response_type = 'application/json'
-            result= {"Status":"Mail Sent"}
-            response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-            try:
-                os.remove("./upload/subject.wav")
-                os.remove("./upload/body.wav")
-            except:
-                pass
-
-            return response
-        
-        elif os.path.isfile("./upload/subject.wav"):
+        else:
             status= 400
             response_type = 'application/json'
-            result= {"Status":"Failed",'Response':'Body not found'}
+            result= {"Status":"Failed",'Response':'Recipients email not found'}
             response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
             return response
-        
-        elif os.path.isfile("./upload/body.wav"):        
-            status= 400
-            response_type = 'application/json'
-            result= {"Status":"Failed",'Response':'Subject not found'}
-            response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-            return response
-        
-        else:    
-            status= 400
-            response_type = 'application/json'
-            result= {"Status":"Failed",'Response':'Subject and Body not found'}
-            response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-            return response
-
 
 
 
