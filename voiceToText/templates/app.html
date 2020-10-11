@@ -88,15 +88,14 @@
       <ol id="recordingsList"></ol>
     </div>
 
-    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script type="text/javascript" src="/static/app.js"></script>
-
-    <form method = "post" action="/mail" enctype = "multipart/form-data">
-      <input class="data" type = "text" placeholder="Enter Recipient Email" required name = "mailId" /><br>
+    <form method = "post" action="/mail" enctype = "multipart/form-data" >
+      <input class="data" type = "email" placeholder="Enter Recipient Email" required name = "mailId" /><br>
       <input class="button" type="submit" value="SEND MAIL"/>
     </form> 
     
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script type="text/javascript" src="/static/app.js"></script>
 
   </body>
   

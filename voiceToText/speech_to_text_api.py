@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template
 import os
+import re
 import json
 import mail_app
-#import mail_app
+
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
@@ -33,51 +34,62 @@ def index():
 def mail():
     if request.method == "POST":
         mailId = request.form['mailId']
-
         if mailId:
-            if os.path.isfile("./upload/subject.wav") and os.path.isfile("./upload/body.wav"):
+            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+            if(re.search(regex,mailId)):  
+                print("Valid Email")  
+
+                if os.path.isfile("./upload/subject.wav") and os.path.isfile("./upload/body.wav"):
+                    
+                    subject_path = "./upload/subject.wav"
+                    body_path = "./upload/body.wav"
+                    res = mail_app.mail_app(subject_path,body_path,mailId)
+
+                    status= 200
+                    response_type = 'application/json'
+                    result= {"Status":res}
+                    response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                    try:
+                        os.remove("./upload/subject.wav")
+                        os.remove("./upload/body.wav")
+                    except:
+                        pass
+
+                    return response
                 
-                subject_path = "./upload/subject.wav"
-                body_path = "./upload/body.wav"
-                res = mail_app.mail_app(subject_path,body_path,mailId)
-
-                status= 200
-                response_type = 'application/json'
-                result= {"Status":res}
-                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-                try:
-                    os.remove("./upload/subject.wav")
-                    os.remove("./upload/body.wav")
-                except:
-                    pass
-
-                return response
-            
-            elif os.path.isfile("./upload/subject.wav"):
+                elif os.path.isfile("./upload/subject.wav"):
+                    status= 400
+                    response_type = 'application/json'
+                    result= {"Status":"Failed",'Response':'Body not found'}
+                    response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                    return response
+                
+                elif os.path.isfile("./upload/body.wav"):        
+                    status= 400
+                    response_type = 'application/json'
+                    result= {"Status":"Failed",'Response':'Subject not found'}
+                    response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                    return response
+                
+                else:    
+                    status= 400
+                    response_type = 'application/json'
+                    result= {"Status":"Failed",'Response':'Subject and Body not found'}
+                    response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
+                    return response
+                      
+            else:  
+                print("Invalid Email")  
                 status= 400
                 response_type = 'application/json'
-                result= {"Status":"Failed",'Response':'Body not found'}
-                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-                return response
-            
-            elif os.path.isfile("./upload/body.wav"):        
-                status= 400
-                response_type = 'application/json'
-                result= {"Status":"Failed",'Response':'Subject not found'}
-                response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
-                return response
-            
-            else:    
-                status= 400
-                response_type = 'application/json'
-                result= {"Status":"Failed",'Response':'Subject and Body not found'}
+                result= {"Status":"Failed",'Response':'Invalid Email'}
                 response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
                 return response
 
         else:
             status= 400
             response_type = 'application/json'
-            result= {"Status":"Failed",'Response':'Recipients email not found'}
+            result= {"Status":"Failed",'Response':'Recipients Email not found'}
             response = app.response_class(response=json.dumps(result), status=status, mimetype=response_type)
             return response
 
