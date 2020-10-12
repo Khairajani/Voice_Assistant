@@ -12,7 +12,7 @@ There after use ```sudo apt install ffmpeg``` to install ffmpeg for merging audi
 ### Run
 - Simply run the ```speech_to_text_api.py``` file to start the server.
 - To Open the dashboard (HTML rendering), goto the localhost IP address, which can be found in terminal as well.
-- Record the subject and body in the dashboard, and finally upload both of them.
+- Record the subject and body of the mail in the dashboard, and finally upload both of them.
 - Enter Recipient email id (currently accepting only 1)
 - Click the SEND MAIL button
 
