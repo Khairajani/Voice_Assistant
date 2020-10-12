@@ -1,6 +1,10 @@
 # Voice Assistant
 This is yet a simple Voice-Assistant System developed using python packages and Google's speech-recongition API. 
 
+### Ken Assessment
+- 1) Text-to-Speech: https://github.com/Khairajani/Voice_Assistant/tree/master/textToSpeech
+- 2) Speech-to-Text: https://github.com/Khairajani/Voice_Assistant/tree/master/voiceToText
+
 #### Requirements
 Install the requirements before moving forward using  ```pip install -r requirements.txt```
 There after use ```sudo apt install ffmpeg``` to install ffmpeg for merging audio
